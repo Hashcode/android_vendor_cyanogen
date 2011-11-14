@@ -36,7 +36,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/solana
 
 # Broadcom FM radio
-$(call inherit-product, vendor/cyanogen/products/bcm_fm_radio.mk)
+#$(call inherit-product, vendor/cyanogen/products/bcm_fm_radio.mk)
+
+# Add the Torch app
+#PRODUCT_PACKAGES += Torch
 
 #
 # Set ro.modversion
@@ -47,10 +50,10 @@ ifdef CYANOGEN_NIGHTLY
 else
     ifdef CYANOGEN_RELEASE
         PRODUCT_PROPERTY_OVERRIDES += \
-            ro.modversion=CyanogenMod-7.1.0-SOLANA
+            ro.modversion=CyanogenMod-7.2.0-RC0-SOLANA
     else
         PRODUCT_PROPERTY_OVERRIDES += \
-            ro.modversion=CyanogenMod-7.1.0-SOLANA-SELFKANG
+            ro.modversion=CyanogenMod-7.2.0-RC0-SOLANA-SELFKANG
     endif
 endif
 
