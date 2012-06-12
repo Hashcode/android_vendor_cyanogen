@@ -41,21 +41,12 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/solana
 # Add the Torch app
 #PRODUCT_PACKAGES += Torch
 
-#
-# Set ro.modversion
-#
-ifdef CYANOGEN_NIGHTLY
-    PRODUCT_PROPERTY_OVERRIDES += \
-        ro.modversion=CyanogenMod-7-$(shell date +%m%d%Y)-NIGHTLY-SOLANA-SELFKANG
-else
-    ifdef CYANOGEN_RELEASE
-        PRODUCT_PROPERTY_OVERRIDES += \
-            ro.modversion=CyanogenMod-7.2.0-RC0-SOLANA
-    else
-        PRODUCT_PROPERTY_OVERRIDES += \
-            ro.modversion=CyanogenMod-7.2.0-RC0-SOLANA-SELFKANG
-    endif
-endif
+# Add additional mounts
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.additionalmounts=/mnt/emmc \
+    ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
+
+-include vendor/cyanogen/products/common_versions.mk
 
 #
 # Copy Droid3 specific prebuilt files
